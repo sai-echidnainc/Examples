@@ -1,0 +1,22 @@
+@media (max-width: 479px){
+	#filter_container{
+		position: absolute;
+		top: 145px;
+		right: 0;
+	}
+	.product_container .span9{
+		width: 100%;
+	}
+	#grid_container.active .span4{
+		width: 50%;
+	}
+	.product_container .span4{
+		width: 50%;
+	}
+	#filter_container{
+		width: 50%;
+	}
+	#filter_container{
+		background:#fff;
+	}
+}
