@@ -1,3 +1,7 @@
+$.fn.masonry =  function(){
+	return false;
+}
+
 var Echidna = (function(jq,self){
 
 		self.halfContentSlide  = function(obj){
@@ -13,11 +17,6 @@ var Echidna = (function(jq,self){
 			if(!trigger.length || !container.length || !filContainer.length) return;
 
 			var init = function(){
-				// var it_height = item.height(), it_width = item.width(),x=0,y=0;
-				// item.each(function(ind,item){
-				// 	//item.width();
-				// 	jq(item).css("transform","translate3d("+(it_width*x)+"px,"+(it_height*y)+"px,"+"0)");
-				// });
 				container.masonry({
 				  itemSelector: opt.item
 				});
@@ -78,3 +77,54 @@ $(window).load(function(){
         });*/
 	$('#filter_container').height(window.innerHeight-$('.company_header').height()-$('.main_nav').height());
 });
+
+
+
+var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
+
+      App.controller('oneCtrl', function($scope, $timeout, lodash, $q) {
+        $scope.products = [
+            {
+              'title': 'Lolcat Shirt',
+              'Price' : '150',
+              'image' : '',
+              'id' : 1,
+              'size' : ['s','m']
+            },
+            {
+              'title': 'Cheezeburger Shirt',
+              'Price' : '110',
+              'image' : '',
+              'id' : 2,
+              'size' : []
+            },
+            {
+              'title': 'Buckit Shirt',
+              'Price' : '50',
+              'image' : '',
+              'id' : 3,
+              'size' : ['l','xl']
+            }
+          ];
+          console.log();
+        $scope.cart = [];
+
+        $scope.hideMe = function() {
+          return $scope.cart.length > 0;
+        }
+        $scope.onDropFn = function(index){
+          var deferred = $q.defer();
+          if(lodash.findIndex($scope.cart,'id',$scope.cart[index].id) != -1){
+            //console.log($scope.cart[index].id);
+            deferred.reject();
+            console.log($scope.cart);
+          }
+        };
+        $scope.beforeDrop = function(index){
+        	if($scope.cart.length && lodash.findIndex($scope.cart,'id',$scope.cart[index].id) != -1){
+            //console.log($scope.cart[index].id);
+            deferred.reject();
+            console.log($scope.cart);
+          }
+        };
+    });

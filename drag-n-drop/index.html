@@ -14,6 +14,7 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -52,10 +53,10 @@
       <!-- <div class="row-fluid">
         <input type="button" value="filter" id="filter_btn" class="filter_btn">
       </div> -->     
-      <div class="row-fluid product_container">
+      <div class="row-fluid product_container" ng-app="drag-and-drop" ng-controller="oneCtrl">
         <div class="span9 grid active" id="grid_container">
           <div class="overlay" id="overlay" style="display:none;"></div>
-          <div class="span4 item">
+          <!-- <div class="span4 item">
             <div class="pro1">
               <img src="img/product.png">
               <div class="descp">
@@ -64,94 +65,34 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
-          </div>
-          <div class="span4 item">
+          </div> -->
+          <div class="span4 item" ng-repeat="product in products" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="products" jqyoui-draggable="{index: {{$index}}, animate: false, placeholder: 'keep', beforeDrop:beforeDrop($index)}">
             <div class="pro1">
               <img src="img/product.png">
               <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div class="span4 item">
-            <div class="pro1">
-              <img src="img/product.png">
-              <div class="descp">
-                <h4>Invant<sup>TM</sup> Exfoliating Shampoo</h4>
-                <h5>$12.99</h5>
+                <h4 ng-bind="product.title"></h4>
+                <h5>{{ product.Price | currency}}</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="span3 active drop-down" id="filter_container">
+        <div class="span3 drop-down" id="filter_container" ng-model='cart' data-drop="true" jqyoui-droppable="{multiple:true}">
           <div class="price">
             <ul>
-              <li>
-                <div class="dropzone"></div>
+              <li ng-repeat="item in cart track by $index" ng-show="item.title">
+                <div class="pro1">
+                  <img src="img/product.png">
+                  <div class="descp">
+                    <h4 ng-bind="item.title"></h4>
+                    <div class="productDescription">
+                      <span>{{ item.Price | currency}}</span>
+                      <span> Quantity : {{ item.Quantity || 1}}</span>
+                    </div>
+                  </div>
+                </div>
               </li>
+              <li class="placeholder" ng-hide="hideMe()">Add your items here</li>
             </ul>
           </div>
         </div>
@@ -165,6 +106,10 @@
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/masonry.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-dragdrop.js"></script>
+    <script src="js/ng-lodash.min.js"></script>
     <script src="js/script.js"></script>
      <!--<script type="text/javascript">
       $(document).ready(function(){
