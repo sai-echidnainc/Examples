@@ -105,6 +105,9 @@ display: inline-block;
 	padding: 15px 20px;
 	text-align: center;
 }
+.price{
+	padding: 15px 0;
+}
 .overlay{
     background:rgba(0,0,0,0.5);
     position:fixed;
@@ -151,11 +154,30 @@ display: inline-block;
 	height: 287px;
 	border: 2px solid #333;
 }
+.price .pro1{
+	padding: 10px;
+	/*border: 1px solid #fff;
+	border-left: none;
+	border-right: none;*/
+	height: 160px;
+}
+.price .pro1:hover{
+	background: #f2f2f2;
+}
 .pro1 .descp{
 	text-align: left;
 }
 .pro1 img{
 	width: 100%;
+	float: left;
+}
+.price .pro1 .descp{
+	float: left;
+	margin-left: 15px;
+}
+.price .pro1 img{
+	width: 50%;
+	float: left;
 }
 .dropzone li{
 	border: 1px solid black;
