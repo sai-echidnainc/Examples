@@ -156,9 +156,6 @@ display: inline-block;
 }
 .price .pro1{
 	padding: 10px;
-	/*border: 1px solid #fff;
-	border-left: none;
-	border-right: none;*/
 	height: 160px;
 }
 .price .pro1:hover{
