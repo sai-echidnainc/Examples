@@ -126,10 +126,14 @@ display: inline-block;
 }
 #filter_btn{
     float: right;
-    padding: 5px 30px;
+    padding: 5px 15px 5px 30px;
     font-size: 14px;
     text-transform: uppercase;
     background: #fff;
+}
+#filter_btn .badge{
+	margin-left: 10px;
+	background: #000;
 }
 .main_nav .navbar-inner{
 	background: #808080;
