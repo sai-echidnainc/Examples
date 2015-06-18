@@ -179,3 +179,8 @@ display: inline-block;
 	border: 1px solid black;
 	margin-bottom: 10px;
 }
+
+
+.dragging {
+  opacity: 0.5;
+}

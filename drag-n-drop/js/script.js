@@ -80,75 +80,77 @@ $(window).load(function(){
 
 
 
-var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
+// var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
 
-      App.controller('oneCtrl', function($scope, $timeout, lodash, $q) {
-        $scope.products = [
-            {
-              'title': 'Lolcat Shirt',
-              'Price' : '150',
-              'image' : '',
-              'id' : 1,
-              'size' : ['s','m']
-            },
-            {
-              'title': 'Cheezeburger Shirt',
-              'Price' : '110',
-              'image' : '',
-              'id' : 2,
-              'size' : []
-            },
-            {
-              'title': 'Buckit Shirt',
-              'Price' : '50',
-              'image' : '',
-              'id' : 3,
-              'size' : ['l','xl']
-            },
-            {
-              'title': 'Buckit Shirt 2',
-              'Price' : '500',
-              'image' : '',
-              'id' : 4,
-              'size' : ['l','xl']
-            },
-            {
-              'title': 'Buckit Shirt 3',
-              'Price' : '150',
-              'image' : '',
-              'id' : 5,
-              'size' : ['l','xl']
-            }
-          ];
-          console.log();
-        $scope.cart = [];
+//       App.controller('oneCtrl', function($scope, $timeout, lodash, $q) {
+//         $scope.products = [
+//             {
+//               'title': 'Lolcat Shirt',
+//               'Price' : '150',
+//               'image' : '',
+//               'id' : 1,
+//               'size' : ['s','m']
+//             },
+//             {
+//               'title': 'Cheezeburger Shirt',
+//               'Price' : '110',
+//               'image' : '',
+//               'id' : 2,
+//               'size' : []
+//             },
+//             {
+//               'title': 'Buckit Shirt',
+//               'Price' : '50',
+//               'image' : '',
+//               'id' : 3,
+//               'size' : ['l','xl']
+//             },
+//             {
+//               'title': 'Buckit Shirt 2',
+//               'Price' : '500',
+//               'image' : '',
+//               'id' : 4,
+//               'size' : ['l','xl']
+//             },
+//             {
+//               'title': 'Buckit Shirt 3',
+//               'Price' : '150',
+//               'image' : '',
+//               'id' : 5,
+//               'size' : ['l','xl']
+//             }
+//           ];
+//           console.log();
+//         $scope.cart = [];
 
-        $scope.hideMe = function() {
-          return $scope.cart.length > 0;
-        }
-        $scope.onDropFn = function(index){
-          var deferred = $q.defer();
-          if(lodash.findIndex($scope.cart,'id',$scope.cart[index].id) != -1){
-            //console.log($scope.cart[index].id);
-            deferred.reject();
-            console.log($scope.cart);
-          }
-        };
-        $scope.beforeDrop = function(index){
-          	var deferred = $q.defer();
-            var index = lodash.findIndex($scope.cart,'id',$scope.products[index].id);
-        	if($scope.cart.length && index != -1){
-            //console.log($scope.cart[index].id);
-            $scope.cart[index].Quantity =  $scope.cart[index].Quantity + 1 || 2; 
-            deferred.reject();
-          	return deferred.promise;
-          }
-        };
-        $scope.showQuanity = function(){
-          var quantity = 0;
-          for (var i = $scope.cart.length - 1; i >= 0; i--) {
-            quantity = quantity + $scope.cart[i].Quantity || 1;
-          };
-          return quantity;
-        } || 0;
-    });
+//         $scope.hideMe = function() {
+//           return $scope.cart.length > 0;
+//         }
+//         $scope.onDropFn = function(index){
+//           var deferred = $q.defer();
+//           if(lodash.findIndex($scope.cart,'id',$scope.cart[index].id) != -1){
+//             //console.log($scope.cart[index].id);
+//             deferred.reject();
+//             console.log($scope.cart);
+//           }
+//         };
+//         $scope.beforeDrop = function(index){
+//           	var deferred = $q.defer();
+//             var index = lodash.findIndex($scope.cart,'id',$scope.products[index].id);
+//         	if($scope.cart.length && index != -1){
+//             //console.log($scope.cart[index].id);
+//             $scope.cart[index].Quantity =  $scope.cart[index].Quantity + 1 || 2; 
+//             deferred.reject();
+//           	return deferred.promise;
+//           }
+//         };
+//         $scope.showQuanity = function(){
+//           var quantity = 0;
+//           for (var i = $scope.cart.length - 1; i >= 0; i--) {
+//             quantity = quantity + $scope.cart[i].Quantity || 1;
+//           };
+//           return quantity;
+//         } || 0;
+//         $scope.onStart = function(index){ console.log(index);};
+//         $scope.onStop = function(index){ console.log(index);};
+//     });

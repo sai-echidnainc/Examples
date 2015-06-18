@@ -66,7 +66,7 @@
               </div>
             </div>
           </div> -->
-          <div class="span4 item" ng-repeat="product in products" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="products" jqyoui-draggable="{index: {{$index}}, animate: false, placeholder: 'keep', beforeDrop:beforeDrop($index)}">
+          <!-- <div class="span4 item" ng-repeat="product in products" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="products" jqyoui-draggable="{index: {{$index}}, animate: false, placeholder: 'keep', beforeDrop:beforeDrop($index), onStart:onStart($index), onStop:onStop($index)}">
             <div class="pro1">
               <img src="img/product.png">
               <div class="descp">
@@ -75,12 +75,12 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="span3 drop-down" id="filter_container" ng-model='cart' data-drop="true" jqyoui-droppable="{multiple:true}">
           <div class="price">
             <ul>
-              <li ng-repeat="item in cart track by $index" ng-show="item.title">
+              <!-- <li ng-repeat="item in cart track by $index" ng-show="item.title">
                 <div class="pro1">
                   <img src="img/product.png">
                   <div class="descp">
@@ -91,7 +91,7 @@
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> -->
               <li class="placeholder" ng-hide="hideMe()">Add your items here</li>
             </ul>
           </div>
@@ -107,9 +107,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/masonry.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    <script src="js/angular.min.js"></script>
+    <!--<script src="js/angular.min.js"></script>
     <script src="js/angular-dragdrop.js"></script>
-    <script src="js/ng-lodash.min.js"></script>
+    <script src="js/ng-lodash.min.js"></script>-->
     <script src="js/script.js"></script>
      <!--<script type="text/javascript">
       $(document).ready(function(){
