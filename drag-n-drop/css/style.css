@@ -158,9 +158,6 @@ display: inline-block;
 	padding: 10px;
 	height: 160px;
 }
-.price .pro1:hover{
-	background: #f2f2f2;
-}
 .pro1 .descp{
 	text-align: left;
 }
@@ -168,13 +165,11 @@ display: inline-block;
 	width: 100%;
 	float: left;
 }
-.price .pro1 .descp{
-	float: left;
-	margin-left: 15px;
-}
+
 .price .pro1 img{
 	width: 50%;
 	float: left;
+	margin-right: 10px;
 }
 .dropzone li{
 	border: 1px solid black;
