@@ -24,13 +24,13 @@
 
   </head>
 
-  <body>
+  <body ng-app="drag-and-drop" ng-controller="oneCtrl">
 
     <div class="navbar navbar-inverse company_header">
       <div class="navbar-inner">
           <div class="header">
             HEADER
-            <span id="filter_btn" class="filter_btn"><img src="img/1434107587_cart-empty.png"></span>
+            <span id="filter_btn" class="filter_btn"><img src="img/1434107587_cart-empty.png"> {{showQuanity()}}</span>
           </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
       <!-- <div class="row-fluid">
         <input type="button" value="filter" id="filter_btn" class="filter_btn">
       </div> -->     
-      <div class="row-fluid product_container" ng-app="drag-and-drop" ng-controller="oneCtrl">
+      <div class="row-fluid product_container">
         <div class="span9 grid" id="grid_container">
           <div class="overlay" id="overlay" style="display:none;"></div>
           <!-- <div class="span4 item">

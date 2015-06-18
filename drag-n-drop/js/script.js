@@ -144,4 +144,11 @@ var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
           	return deferred.promise;
           }
         };
+        $scope.showQuanity = function(){
+          var quantity = 0;
+          for (var i = $scope.cart.length - 1; i >= 0; i--) {
+            quantity = quantity + $scope.cart[i].Quantity || 1;
+          };
+          return quantity;
+        } || 0;
     });
