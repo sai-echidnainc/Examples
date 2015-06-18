@@ -104,6 +104,20 @@ var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
               'image' : '',
               'id' : 3,
               'size' : ['l','xl']
+            },
+            {
+              'title': 'Buckit Shirt 2',
+              'Price' : '500',
+              'image' : '',
+              'id' : 4,
+              'size' : ['l','xl']
+            },
+            {
+              'title': 'Buckit Shirt 3',
+              'Price' : '150',
+              'image' : '',
+              'id' : 5,
+              'size' : ['l','xl']
             }
           ];
           console.log();
@@ -121,10 +135,13 @@ var App = angular.module('drag-and-drop', ['ngDragDrop', 'ngLodash']);
           }
         };
         $scope.beforeDrop = function(index){
-        	if($scope.cart.length && lodash.findIndex($scope.cart,'id',$scope.cart[index].id) != -1){
+          	var deferred = $q.defer();
+            var index = lodash.findIndex($scope.cart,'id',$scope.products[index].id);
+        	if($scope.cart.length && index != -1){
             //console.log($scope.cart[index].id);
+            $scope.cart[index].Quantity =  $scope.cart[index].Quantity + 1 || 2; 
             deferred.reject();
-            console.log($scope.cart);
+          	return deferred.promise;
           }
         };
     });
