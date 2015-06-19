@@ -2,6 +2,80 @@ $.fn.masonry =  function(){
 	return false;
 }
 
+var context = {
+  Products : [
+            {
+              'title': 'Lolcat Shirt',
+              'Price' : '150',
+              'image' : '',
+              'id' : 1,
+              'size' : ['s','m']
+            },
+            {
+              'title': 'Cheezeburger Shirt',
+              'Price' : '110',
+              'image' : '',
+              'id' : 2,
+              'size' : []
+            },
+            {
+              'title': 'Buckit Shirt',
+              'Price' : '50',
+              'image' : '',
+              'id' : 3,
+              'size' : ['l','xl']
+            },
+            {
+              'title': 'Buckit Shirt 2',
+              'Price' : '500',
+              'image' : '',
+              'id' : 4,
+              'size' : ['l','xl']
+            },
+            {
+              'title': 'Buckit Shirt 3',
+              'Price' : '150',
+              'image' : '',
+              'id' : 5,
+              'size' : ['l','xl']
+            }
+          ],
+          cart : {}
+        };
+
+var templets = {
+  product : '{{#each Products}}\
+          <div class="span4 item draggable">\
+            <div class="pro1">\
+              <img src="img/product.png">\
+              <div class="descp">\
+                <h4>{{title}}</h4>\
+                <h5>$ {{Price}}</h5>\
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\
+              </div>\
+            </div>\
+          </div>\
+          {{/each}}',
+  cart : '{{#if cart.length}}\
+              {{#each cart}}\
+              <li>\
+                <div class="pro1">\
+                  <img src="img/product.png">\
+                  <div class="descp">\
+                    <h4>{{title}}</h4>\
+                    <div class="productDescription">\
+                      <span>{{Price}}</span>\
+                      <span> Quantity : {{Quantity}}</span>\
+                    </div>\
+                  </div>\
+                </div>\
+              </li>\
+              {{/each}}\
+            {{else}}\
+            Darg and Drop to Add an item\
+            {{/if}}'
+};
+
 var Echidna = (function(jq,self){
 
 		self.halfContentSlide  = function(obj){
@@ -75,6 +149,15 @@ $(window).load(function(){
          /* $('.overlay').css('display','none');
         }
         });*/
+  var prodcutTmp = Handlebars.compile(templets.product);
+  var cartTmp = Handlebars.compile(templets.cart);
+  console.log(prodcutTmp(context));
+  $("#prodDiv").html(prodcutTmp(context));
+  $("#cartDiv").html(cartTmp((context)));
+  $( ".draggable" ).draggable({ revert: true, helper: "clone" });
+  $(".droppable").droppable({
+      accept: ".draggable"
+    });
 	$('#filter_container').height(window.innerHeight-$('.company_header').height()-$('.main_nav').height());
 });
 

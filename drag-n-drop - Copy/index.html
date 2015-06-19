@@ -30,7 +30,7 @@
       <div class="navbar-inner">
           <div class="header">
             HEADER
-            <span id="filter_btn" class="filter_btn"><img src="img/1434107587_cart-empty.png"> <span class="badge">{{showQuanity()}}</span></span>
+            <span id="filter_btn" class="filter_btn"><img src="img/1434107587_cart-empty.png"> <span class="badge" id="cartSize">0</span></span>
           </div>
       </div>
     </div>
@@ -56,6 +56,7 @@
       <div class="row-fluid product_container">
         <div class="span9 grid" id="grid_container">
           <div class="overlay" id="overlay" style="display:none;"></div>
+          <div id="prodDiv"></div>
           <!-- <div class="span4 item">
             <div class="pro1">
               <img src="img/product.png">
@@ -77,9 +78,9 @@
             </div>
           </div> -->
         </div>
-        <div class="span3 drop-down" id="filter_container" ng-model='cart' data-drop="true" jqyoui-droppable="{multiple:true}">
+        <div class="span3 drop-down droppable" id="filter_container" ng-model='cart' data-drop="true" jqyoui-droppable="{multiple:true}">
           <div class="price">
-            <ul>
+            <ul id="cartDiv">
               <!-- <li ng-repeat="item in cart track by $index" ng-show="item.title">
                 <div class="pro1">
                   <img src="img/product.png">
@@ -110,6 +111,7 @@
     <!--<script src="js/angular.min.js"></script>
     <script src="js/angular-dragdrop.js"></script>
     <script src="js/ng-lodash.min.js"></script>-->
+    <script src="js/handlebars-v3.0.3.js"></script>
     <script src="js/script.js"></script>
      <!--<script type="text/javascript">
       $(document).ready(function(){
